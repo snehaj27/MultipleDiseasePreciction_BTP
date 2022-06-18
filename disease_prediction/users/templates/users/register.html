@@ -1,0 +1,109 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body%}
+<style>
+    .content-section{
+        flex-wrap: wrap;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        font-size: 1.5rem;
+        padding-top: 10rem;
+    }
+    .content-section .imgBx{
+        position: relative;
+        width: 50%;
+        height: 100%;
+    }
+    .content-section .imgBx img{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+
+    }
+    .textinput .emailinput {
+        border-radius: 1.5rem;
+        width: 40rem;
+        padding:1rem;
+        margin:1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+    }
+    .heading{
+        font-size: 3.2rem;
+        font-weight: bolder;
+        color: #13c494;
+    }
+    .formBx{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
+    .text-muted{
+        font-size: 1.3rem;
+       
+    }
+    .contentBx .formBx{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
+    .sign-up{
+        display: flex;
+        align-items: center;
+        padding: 2rem;
+        padding-left: 10rem;
+    }
+    .btn-outline-info{
+        width: 25rem;
+        border-radius: 1.5rem;
+        font-weight: bolder;
+        background-color: #13c494;
+        color: white;
+
+    }
+    .btn-outline-info:hover{
+        background-color: white;
+        color: #13c494;
+
+    }
+</style>
+<div class="content-section">
+    <div class="imgBx">
+        <img src="../media/loginRegister/register.svg" alt="register">
+    </div>
+    <div class="formBx">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="heading border-bottom mb-4">Join Us Today!</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="sign-up form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+
+    </div>
+    
+</div>
+{% endblock %}

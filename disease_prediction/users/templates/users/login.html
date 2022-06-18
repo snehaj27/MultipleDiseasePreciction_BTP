@@ -1,0 +1,113 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body%}
+<style>
+    .content-section{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        padding-top: 10rem;
+    }
+    .content-section .imgBx{
+        position: relative;
+        width: 50%;
+        height: 100%;
+    }
+    .content-section .imgBx img{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+
+    }
+    .textinput {
+        border-radius: 1.5rem;
+        width: 40rem;
+        padding:1rem;
+        margin:1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+    }
+    .heading{
+        font-size: 3.2rem;
+        font-weight: bolder;
+        color: #13c494;
+    }
+    .contentBx{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        padding:7.2rem;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        font-size: 1.5rem;
+       
+    }
+    .text-muted{
+        font-size: 1.5rem;
+    }
+    .contentBx .formBx{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
+    .btn-outline-info{
+        width: 25rem;
+        margin: 2rem;
+        border-radius: 1.5rem;
+        font-weight: bolder;
+        background-color: #13c494;
+        color: antiquewhite;
+
+    }
+    .btn-outline-info:hover{
+        background-color: white;
+        color: #13c494;
+
+    }
+
+   
+</style>
+<div id="content-section" class="content-section">
+    <div class="imgBx">
+        <img src="../media/loginRegister/login.svg" alt="login">
+
+    </div>
+    <div class="contentBx">
+        <div class="formBx">
+            <form class="form" method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="heading border-bottom mb-4" > Log In</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit" >Login</button>
+                    <small>
+                        <a href="{% url 'password_reset' %}"> Forgot Password?</a>
+                    </small>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+                </small>
+            </div>
+
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}
