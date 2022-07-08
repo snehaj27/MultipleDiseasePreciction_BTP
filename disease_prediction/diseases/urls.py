@@ -6,6 +6,6 @@ urlpatterns = [
     path('liver-disease/', views.liver, name="liver_disease"),
     path('kidney-disease/', views.kidney, name="kidney_disease"),
     path('diabetes/', views.diabetes, name="diabetes"),
-    path('breast-cancer/', views.breastCancer, name="breast_cancer")
-
+    path('breast-cancer/', views.breastCancer, name="breast_cancer"),
+    path('diabetes/result', views.result, name="diabetes_result")
 ]
